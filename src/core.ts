@@ -8,7 +8,7 @@ import { maxPayloadSize, chainId, from, wif, permission } from './costants'
 const config = {
   chainId: chainId,
   keyProvider: [wif],
-  httpEndpoint: 'https://api.eosnewyork.io',
+  httpEndpoint: 'http://jungle.cryptolions.io:18888',
   // TODO: changeable https://api.eosnewyork.io https://nodes.get-scatter.com
   expireInSeconds: 60,
   broadcast: true,
@@ -32,7 +32,7 @@ export function doTx(memo: string): Promise<any> {
       const options = {
         authorization: [`${from}@${permission}`]
       }
-      eos.contract('eosfilestore').then((contract: any) => {
+      eos.contract('eositemstore').then((contract: any) => {
         contract.upload(memo, options).then((res:any) => {
           resolve(res)
         })
